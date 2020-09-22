@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <Logo />
+      <Logo colore="black" />
       <h1 class="title">veeri</h1>
       <div class="links">
         <a

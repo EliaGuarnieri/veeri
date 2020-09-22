@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="brand-name">
-      <nuxt-link to="/">HAPPY VUE YEAR</nuxt-link>
+      <nuxt-link to="/"><Logo /></nuxt-link>
     </div>
 
     <div
@@ -23,11 +23,12 @@
 </template>
 
 <script>
+import Logo from '@/components/Logo'
 import AppLinks from './AppLinks'
 import Sidebar from './Sidebar'
 
 export default {
-  components: { AppLinks, Sidebar },
+  components: { AppLinks, Sidebar, Logo },
   computed: {
     isSidebar() {
       return this.$store.getters['nav/toggleSidebar']
@@ -43,12 +44,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 header {
   display: grid;
   grid-template: 60px / auto 1fr;
   align-items: center;
-  background-color: #333;
+  background-color: hsl(255, 100%, 100%);
 }
 
 .app-links {
@@ -103,6 +104,11 @@ header {
   }
   .drawer-toggle {
     display: none;
+  }
+}
+.brand-name a {
+  @include for-size(small) {
+    color: yellow;
   }
 }
 </style>

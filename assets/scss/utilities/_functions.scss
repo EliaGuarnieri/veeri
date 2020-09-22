@@ -1,0 +1,12 @@
+/**
+ * Ritorna il valore minimo di una Map di valori in px
+ */
+
+@function getMinMap($map) {
+  $list: ();
+  @each $key, $value in $map {
+    $list: append($list, $value / 1px, comma);
+  }
+
+  @return min($list...);
+}

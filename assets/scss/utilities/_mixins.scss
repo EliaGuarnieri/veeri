@@ -27,3 +27,29 @@
         @content;
     }
 }
+
+
+/**
+ * Media query
+ * @expample @include for('small') { font-size: 1.4rem }
+ */
+
+
+@mixin for-size($size) {
+  $list: ();
+  @each $breakpoint, $value in $breakpoints {
+    @if $breakpoint == $size {
+      @if $value == getMinMap($breakpoints) {
+        @media (max-width: $value) { @content; }
+      } @else {
+        @media (min-width: $value) { @content; }
+      }
+
+      $list: append($list, $size)
+    }
+  }
+
+  @if length($list) == 0 {
+    @warn "Breakpoint non presente. Aggiungi breakpoint in $breakpoints -> assets/scss/utilities/variables";
+  }
+}

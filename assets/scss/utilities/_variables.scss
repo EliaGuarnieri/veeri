@@ -19,7 +19,7 @@ $nero: hsl(0, 0%, 11%) !default;
  * @prop {Map} Values - valore larghezza in px
  */
 
-$breakpoint: (
+$breakpoints: (
   'small': 320px,
   'medium': 768px,
   'large': 1024px,

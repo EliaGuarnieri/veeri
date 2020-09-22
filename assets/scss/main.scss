@@ -1,15 +1,7 @@
 @charset "UTF-8";
 
 /**
- * 1. Utilities
- */
-
-@import
-  'utilities/mixins',
-  'utilities/variables';
-
-/**
- * 2. base
+ * 1. base
  */
 
 @import
@@ -19,7 +11,11 @@
 
 
 /**
- * 3. vendors
+ * 2. vendors
  */
 @import
   'vendors/normailze';
+
+/**
+ * Le utilities sono importate in nuxt.config.js
+ */

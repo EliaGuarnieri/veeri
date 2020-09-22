@@ -1,0 +1,26 @@
+/**
+ * Font
+ */
+$font-testo: 'Cera', sans-serif !default;
+$font-black: 'Cera Black', sans-serif !default;
+$font-bold: 'Cera Bold', sans-serif !default;
+
+/**
+ * Colori
+ */
+$rosa: hsl(313, 55%, 72%) !default;
+$blu: hsl(238, 76%, 48%) !default;
+$nero: hsl(0, 0%, 11%) !default;
+
+
+/**
+ * Mappa breakpoints
+ * @prop {String} keys - identifica il dispositivo
+ * @prop {Map} Values - valore larghezza in px
+ */
+
+$breakpoint: (
+  'small': 320px,
+  'medium': 768px,
+  'large': 1024px,
+) !default;

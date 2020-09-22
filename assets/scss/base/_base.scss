@@ -1,0 +1,21 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/**
+ * Stile base per i link
+ */
+a {
+  color: $nero;
+  text-decoration: none;
+
+  @include on-event {
+    color: $nero;
+  }
+}

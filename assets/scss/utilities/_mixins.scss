@@ -1,0 +1,29 @@
+/**
+ * Raggruppa tutti gli eventi
+ */
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/**
+ * Modifica in base al contesto
+ * @link https://css-tricks.com/snippets/sass/simplifying-contexts-events/
+ */
+@mixin when-inside($context) {
+    #{$context} & {
+        @content;
+    }
+}

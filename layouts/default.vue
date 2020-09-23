@@ -16,3 +16,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+main {
+  margin-top: $header-size;
+}
+</style>

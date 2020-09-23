@@ -1,24 +1,26 @@
 <template>
   <header>
-    <div class="brand-name">
-      <nuxt-link to="/"><Logo /></nuxt-link>
+    <div class="navbar" :class="{ open: isSidebar }">
+      <div class="brand-name">
+        <nuxt-link to="/"><Logo /></nuxt-link>
+      </div>
+
+      <div
+        class="drawer-toggle"
+        role="button"
+        @click="$store.dispatch('nav/toggleSidebar')"
+      >
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+
+      <div class="app-links">
+        <app-links></app-links>
+      </div>
     </div>
 
-    <div
-      class="drawer-toggle"
-      role="button"
-      @click="$store.dispatch('nav/toggleSidebar')"
-    >
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-    </div>
-
-    <div class="app-links">
-      <app-links></app-links>
-    </div>
-
-    <Sidebar />
+    <Sidebar v-if="isMobile" />
   </header>
 </template>
 
@@ -29,16 +31,46 @@ import Sidebar from './Sidebar'
 
 export default {
   components: { AppLinks, Sidebar, Logo },
+  data() {
+    return {
+      windowSize: null,
+    }
+  },
   computed: {
     isSidebar() {
       return this.$store.getters['nav/toggleSidebar']
     },
+    isMobile() {
+      return this.windowSize < this.variables.breakmedium
+    },
+    variables() {
+      return this.$store.state.variables.styles
+    },
   },
   watch: {
     $route() {
-      if (process.client && this.isSidebar && window.innerWidth < 768) {
+      if (
+        process.client &&
+        this.isSidebar &&
+        window.innerWidth < this.variables.breakmedium
+      ) {
         this.$store.dispatch('nav/toggleSidebar')
       }
+    },
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.windowSize = window.innerWidth
+      window.addEventListener('resize', this.onResize)
+    })
+  },
+
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize)
+  },
+  methods: {
+    onResize() {
+      this.windowSize = window.innerWidth
     },
   },
 }
@@ -46,30 +78,41 @@ export default {
 
 <style lang="scss" scoped>
 header {
+  background-color: #fff;
+  position: fixed;
+  width: 100%;
+}
+.navbar {
   display: grid;
-  grid-template: 60px / auto 1fr;
+  position: relative;
+  width: 100%;
+  grid-template: $header-size / auto 1fr;
   align-items: center;
-  background-color: hsl(255, 100%, 100%);
+  z-index: 100000;
+  padding: 0 $header-padding;
+
+  &:nth-child {
+    justify-self: end !important;
+  }
+
+  @include for-size(medium, from) {
+    padding: 0 64px;
+  }
 }
 
 .app-links {
+  display: none;
   justify-self: end;
-}
 
-.brand-name {
-  margin: 0 10px;
-  font-size: 1.3rem;
-}
-
-.brand-name a {
-  text-decoration: none;
-  color: white;
+  @include for-size(medium, from) {
+    display: block;
+  }
 }
 
 .drawer-toggle .bar {
   width: 90%;
   height: 2px;
-  background-color: white;
+  background-color: $blu;
 }
 
 .drawer-toggle {
@@ -77,38 +120,12 @@ header {
   justify-self: end;
   flex-direction: column;
   justify-content: space-around;
-  height: 50%;
+  height: 26px;
   width: 35px;
-  padding-right: 16px;
   cursor: pointer;
-}
 
-@media (max-width: 767px) {
-  header {
-    padding: 0 16px;
-  }
-  header:nth-child {
-    justify-self: end !important;
-  }
-  .app-links {
+  @include for-size(medium, from) {
     display: none;
-  }
-}
-
-@media (min-width: 768px) {
-  header {
-    padding: 0 64px;
-  }
-  .app-links {
-    display: block;
-  }
-  .drawer-toggle {
-    display: none;
-  }
-}
-.brand-name a {
-  @include for-size(small) {
-    color: yellow;
   }
 }
 </style>

@@ -1,45 +1,37 @@
 <template>
   <ul class="nav-list">
-    <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>
-    <li class="nav-item"><nuxt-link to="/services">Services</nuxt-link></li>
-    <li class="nav-item"><nuxt-link to="/contact">Contact</nuxt-link></li>
+    <li class="nav-item"><nuxt-link to="/servizi">servizi</nuxt-link></li>
+    <li class="nav-item"><nuxt-link to="/by-veeri">by veeri</nuxt-link></li>
+    <li class="nav-item"><nuxt-link to="/about">about</nuxt-link></li>
+    <li class="nav-item"><nuxt-link to="/contatti">contatti</nuxt-link></li>
   </ul>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+  display: block;
 
+  @include for-size(medium, from) {
+    display: flex;
+    a {
+      margin: 0 10px;
+    }
+  }
+}
 .nav-item {
-  margin: 0 10px;
+  display: block;
+  font-size: 2rem;
+  padding-bottom: 16px;
 }
 
 .nav-item a {
-  text-decoration: none;
-  color: #fefefe;
+  display: block;
+  font-family: $font-black;
+  color: $blu;
 }
 
 .nav-item a:hover,
 .nav-item a:active {
-  color: #b4b4b4;
-}
-
-@media (max-width: 767px) {
-  .nav-list {
-    display: block;
-  }
-  .nav-item {
-    margin-top: 16px;
-    margin-bottom: 16px;
-  }
-}
-
-@media (min-width: 768px) {
-  .nav-list {
-    display: flex;
-  }
+  color: darken($blu, 20%);
 }
 </style>

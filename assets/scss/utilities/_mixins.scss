@@ -31,7 +31,7 @@
 
 /**
  * Media query
- * @expample @include for('small') { font-size: 1.4rem }
+ * @expample @include for(small) { font-size: 1.4rem }
  */
 
 
@@ -39,10 +39,10 @@
   $list: ();
   @each $breakpoint, $value in $breakpoints {
     @if $breakpoint == $size {
-      @if $value == getMinMap($breakpoints) {
-        @media (max-width: $value) { @content; }
-      } @else {
+      @if $value == getMaxMap($breakpoints) {
         @media (min-width: $value) { @content; }
+      } @else {
+        @media (max-width: $value) { @content; }
       }
 
       $list: append($list, $size)

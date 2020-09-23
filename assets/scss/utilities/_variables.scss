@@ -12,6 +12,12 @@ $rosa: hsl(313, 55%, 72%) !default;
 $blu: hsl(238, 76%, 48%) !default;
 $nero: hsl(0, 0%, 11%) !default;
 
+/**
+ * Header
+ */
+$header-size: 60px;
+$header-padding: 16px;
+
 
 /**
  * Mappa breakpoints
@@ -30,5 +36,17 @@ $breakpoints: (
  * Esportazione per accesso in JS
  */
 :export {
+  fontTesto: $font-testo;
+  fontBlack: $font-black;
+  fontBold: $font-bold;
+
+  rosa: $rosa;
   blu: $blu;
+  nero: $nero;
+
+  headerSize: $header-size;
+
+  @each $key, $value in $breakpoints {
+    break#{$key} : $value / 1px;
+  }
 }

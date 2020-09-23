@@ -35,13 +35,13 @@
  */
 
 
-@mixin for-size($size) {
+@mixin for-size($size, $target: from ) {
   $list: ();
   @each $breakpoint, $value in $breakpoints {
     @if $breakpoint == $size {
-      @if $value == getMaxMap($breakpoints) {
+      @if $target == from {
         @media (min-width: $value) { @content; }
-      } @else {
+      } @else if $target == to {
         @media (max-width: $value) { @content; }
       }
 

@@ -85,6 +85,13 @@ export default {
 
     @include for-size(medium, from) {
       position: absolute;
+      background-color: white;
+      margin-left: -16px;
+      padding: 0 16px;
+      &.open {
+        max-height: 238px + 16px;
+        padding-bottom: 16px;
+      }
     }
   }
 
@@ -104,6 +111,7 @@ export default {
   @include for-size(medium, from) {
     &:not(.sub) {
       margin: 0 10px;
+      padding-bottom: 0;
     }
   }
 }

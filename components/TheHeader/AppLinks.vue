@@ -57,9 +57,6 @@ export default {
 
   @include for-size(medium, from) {
     display: flex;
-    a {
-      margin: 0 10px;
-    }
   }
 }
 
@@ -85,6 +82,10 @@ export default {
     &.open {
       max-height: 238px;
     }
+
+    @include for-size(medium, from) {
+      position: absolute;
+    }
   }
 
   &.sub:first-child {
@@ -98,6 +99,12 @@ export default {
   &.sub a {
     font-family: $font-testo;
     font-size: 1rem;
+  }
+
+  @include for-size(medium, from) {
+    &:not(.sub) {
+      margin: 0 10px;
+    }
   }
 }
 

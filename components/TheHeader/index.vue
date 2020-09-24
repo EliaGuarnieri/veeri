@@ -10,9 +10,9 @@
         role="button"
         @click="$store.dispatch('nav/toggleSidebar')"
       >
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
+        <div ref="topLine" class="bar"></div>
+        <div ref="middleLine" class="bar"></div>
+        <div ref="bottomLine" class="bar"></div>
       </div>
 
       <div class="app-links">
@@ -26,6 +26,7 @@
 
 <script>
 import Logo from '@/components/Logo'
+import { TimelineLite } from 'gsap'
 import AppLinks from './AppLinks'
 import Sidebar from './Sidebar'
 
@@ -34,6 +35,7 @@ export default {
   data() {
     return {
       windowSize: null,
+      tl: new TimelineLite({ paused: true }),
     }
   },
   computed: {
@@ -57,12 +59,42 @@ export default {
         this.$store.dispatch('nav/toggleSidebar')
       }
     },
+    isSidebar() {
+      if (this.isSidebar) {
+        this.tl.play()
+      } else {
+        this.tl.reverse()
+      }
+    },
   },
   mounted() {
     this.$nextTick(() => {
       this.windowSize = window.innerWidth
       window.addEventListener('resize', this.onResize)
     })
+    this.tl
+      .to(this.$refs.middleLine, 0.3, {
+        x: -35,
+        opacity: 0,
+      })
+      .to(
+        this.$refs.topLine,
+        0.3,
+        {
+          y: 9,
+          rotate: 45,
+        },
+        0
+      )
+      .to(
+        this.$refs.bottomLine,
+        0.3,
+        {
+          y: -8,
+          rotate: -45,
+        },
+        0
+      )
   },
 
   beforeDestroy() {

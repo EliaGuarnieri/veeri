@@ -26,7 +26,7 @@
 
 <script>
 import Logo from '@/components/Logo'
-import { TimelineLite } from 'gsap'
+import { TimelineLite } from 'gsap/dist/gsap.min.js'
 import AppLinks from './AppLinks'
 import Sidebar from './Sidebar'
 

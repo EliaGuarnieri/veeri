@@ -16,7 +16,13 @@ $nero: hsl(0, 0%, 11%) !default;
  * Header
  */
 $header-size: 60px;
-$header-padding: 16px;
+
+/**
+ * Spaziature
+ */
+
+$mobile-padding: 16px;
+$desktop-padding: 64px;
 
 
 /**

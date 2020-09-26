@@ -123,14 +123,14 @@ header {
   grid-template: $header-size / auto 1fr;
   align-items: center;
   z-index: 100000;
-  padding: 0 $header-padding;
+  padding: 0 $mobile-padding;
 
   &:nth-child {
     justify-self: end !important;
   }
 
   @include for-size(medium, from) {
-    padding: 0 64px;
+    padding: 0 $desktop-padding;
   }
 }
 

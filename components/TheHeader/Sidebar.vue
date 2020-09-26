@@ -34,7 +34,7 @@ export default {
   position: fixed;
   bottom: 0;
   left: 0;
-  padding: $header-padding;
+  padding: $mobile-padding;
   padding-top: 80px;
 }
 
@@ -42,7 +42,7 @@ hr {
   margin: 0;
   background-color: $blu;
   border-color: $blu;
-  margin-bottom: $header-padding;
+  margin-bottom: $mobile-padding;
 }
 
 .mail {

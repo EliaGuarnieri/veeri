@@ -1,12 +1,17 @@
 <template>
-  <Container :bg-color="variables.blu"> </Container>
+  <Container :bg-color="variables.blu">
+    <ContactForm />
+  </Container>
 </template>
 
 <script>
 import Container from '@/components/Container'
+import ContactForm from '@/components/ContactForm'
+
 export default {
   components: {
     Container,
+    ContactForm,
   },
   computed: {
     variables() {

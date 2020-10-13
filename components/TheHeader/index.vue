@@ -61,8 +61,10 @@ export default {
     },
     isSidebar() {
       if (this.isSidebar) {
+        document.body.classList.add('sidebar-open')
         this.tl.play()
       } else {
+        document.body.classList.remove('sidebar-open')
         this.tl.reverse()
       }
     },

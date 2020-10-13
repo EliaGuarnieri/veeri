@@ -32,3 +32,10 @@ a {
     color: $nero;
   }
 }
+
+/**
+ * Blocca lo scroll del background quando il menu è aperto
+ */
+.sidebar-open {
+  overflow: hidden;
+}
